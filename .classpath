@@ -3,8 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Tests"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="C:/Users/Eugene/Documents/Workspace_tmp/TrackytAPI/packages/gson-1.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Eugene/Documents/Workspace_tmp/TrackytAPI/packages/httpcomponents-client-4.1/lib/httpclient-4.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Eugene/Documents/Workspace_tmp/TrackytAPI/packages/httpcomponents-client-4.1/lib/httpcore-4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eugene/Documents/Workspace_tmp/TrackytAPI/lib/gson-1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eugene/Documents/Workspace_tmp/TrackytAPI/lib/httpcomponents-client-4.1/lib/httpclient-4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Eugene/Documents/Workspace_tmp/TrackytAPI/lib/httpcomponents-client-4.1/lib/httpcore-4.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

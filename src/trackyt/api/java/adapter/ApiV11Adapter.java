@@ -9,7 +9,7 @@ import trackyt.api.java.exceptions.NotAuthenticatedException;
 import trackyt.api.java.models.ApiToken;
 import trackyt.api.java.models.Task;
 
-public class TrackytApiAdapterImpl implements TrackytApiAdapter {
+public class ApiV11Adapter implements TrackytApiAdapter {
 
 	@Override
 	public ApiToken Authenticate(String email, String password)
