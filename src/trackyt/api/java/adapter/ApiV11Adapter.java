@@ -9,6 +9,7 @@ import trackyt.api.java.exceptions.NotAuthenticatedException;
 import trackyt.api.java.models.ApiToken;
 import trackyt.api.java.models.Task;
 import trackyt.api.java.responses.AuthenticationResponse;
+import trackyt.api.java.responses.GetAllTasksResponse;
 import trackyt.api.java.utils.RequestMaker;
 
 import com.google.gson.Gson;
@@ -33,8 +34,7 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 			throw new NotAuthenticatedException();
 		}
 		
-		AuthenticationResponse authResponse = new AuthenticationResponse();
-		authResponse = new Gson().fromJson(receivedString, AuthenticationResponse.class);
+		AuthenticationResponse authResponse = new Gson().fromJson(receivedString, AuthenticationResponse.class);
 
 		if (!authResponse.success) {
 			throw new NotAuthenticatedException();
@@ -47,8 +47,21 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 
 	@Override
 	public List<Task> getAllTasks(ApiToken token) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		String receivedString;
+		
+		try {
+			receivedString = requestMaker.getAllTasks(token);
+		} catch (HttpException e) {
+			throw new Exception("Request/Response from/to server was unsuccessful");
+		}
+		
+		GetAllTasksResponse response = new Gson().fromJson(receivedString, GetAllTasksResponse.class);
+		
+		if (!response.success) {
+			throw new Exception("Get all tasks operation was unsuccessful");
+		}
+		
+		return response.getTasksList();
 	}
 
 	@Override
