@@ -26,14 +26,14 @@ public class AdapterTests {
 	}
 	
 
-//	@Before
-//	public void runBeforeEachTest() {
-//		try {
-//			this.apiToken = adapter.authenticate(mEmail, mPassword);
-//		} catch (NotAuthenticatedException e) {
-//			fail("@Before failed");
-//		}
-//	}
+	@Before
+	public void runBeforeEachTest() {
+		try {
+			this.apiToken = adapter.authenticate(mEmail, mPassword);
+		} catch (NotAuthenticatedException e) {
+			fail("@Before failed");
+		}
+	}
 	
 
 	@Test
@@ -80,7 +80,7 @@ public class AdapterTests {
 		List<Task> tasksList = new ArrayList<Task>();
 
 		try {
-			tasksList = adapter.getAllTasks(new ApiToken());
+			tasksList = adapter.getAllTasks(new ApiToken("654654654"));
 			fail("No exception thrown");
 		} catch (Exception e) {
 			// Means test passed, no need to process
@@ -105,7 +105,7 @@ public class AdapterTests {
 	@Test
 	public void CreateTask_Fail_ExceptionThrown() {
 		try {
-			adapter.addTask(new ApiToken(), "New Task");
+			adapter.addTask(new ApiToken("654654654"), "New Task");
 			fail("No exception thrown");
 		} catch (Exception e) {
 			// Means test passed, no need to process
@@ -141,7 +141,7 @@ public class AdapterTests {
 	@Test
 	public void DeleteTask_Fail_WrongApiToken_ExceptionThrown() {
 		try {
-			adapter.addTask(new ApiToken(), "Task's description");
+			adapter.addTask(new ApiToken("654654654"), "Task's description");
 			fail("No exception thrown");
 		} catch (Exception e) {
 			// Means test passed, no need to process
@@ -204,7 +204,7 @@ public class AdapterTests {
 
 		if (task != null) {
 			try {
-				adapter.startTask(new ApiToken(), task.getId());
+				adapter.startTask(new ApiToken("654654654"), task.getId());
 				fail("No exception thrown");
 			} catch (Exception e) {
 				// Means test passed, no need to process
@@ -279,7 +279,7 @@ public class AdapterTests {
 		}
 
 		try {
-			adapter.stopTask(new ApiToken(), taskToStop.getId());
+			adapter.stopTask(new ApiToken("654654654"), taskToStop.getId());
 			fail("No exception thrown");
 		} catch (Exception e) {
 			// Means test passed, no need to process
