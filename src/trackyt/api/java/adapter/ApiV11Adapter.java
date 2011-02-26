@@ -2,7 +2,7 @@ package trackyt.api.java.adapter;
 
 import java.util.List;
 
-import org.apache.http.HttpException;
+import org.apache.http.Exception;
 
 import trackyt.api.java.TrackytApiAdapter;
 import trackyt.api.java.exceptions.NotAuthenticatedException;
@@ -19,44 +19,44 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 	}
 
 	@Override
-	public List<Task> GetAllTasks(ApiToken token) throws HttpException {
+	public List<Task> GetAllTasks(ApiToken token) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Task AddTask(ApiToken token, String description)
-			throws HttpException {
+			throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int DeleteTask(ApiToken apiToken, int taskId) throws HttpException {
+	public int DeleteTask(ApiToken apiToken, int taskId) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public Task StartTask(ApiToken apiToken, int taskId) throws HttpException {
+	public Task StartTask(ApiToken apiToken, int taskId) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Task StopTask(ApiToken apiToken, int taskId) throws HttpException {
+	public Task StopTask(ApiToken apiToken, int taskId) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void StartAll(ApiToken apiToken) throws HttpException {
+	public void StartAll(ApiToken apiToken) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void StopAll(ApiToken apiToken) throws HttpException {
+	public void StopAll(ApiToken apiToken) throws a {
 		// TODO Auto-generated method stub
 		
 	}
