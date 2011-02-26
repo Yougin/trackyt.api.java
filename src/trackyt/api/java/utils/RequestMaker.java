@@ -16,7 +16,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 
 import trackyt.api.java.models.ApiToken;
-import trackyt.api.java.models.Task;
 
 public class RequestMaker {
 	
@@ -35,7 +34,7 @@ public class RequestMaker {
 		return REQUEST_MAKER;
 	}
 	
-	public String login(String email, String password) throws HttpException {
+	public String authenticate(String email, String password) throws HttpException {
 		params = new ArrayList<NameValuePair>();
 		URI uri = urlComposer.composeUrl(MyConfig.POST_AUTH_URL);
 		HttpPost httpPost = new HttpPost(uri);
