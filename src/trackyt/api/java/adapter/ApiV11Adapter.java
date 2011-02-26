@@ -54,7 +54,7 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 	}
 
 	@Override
-	public void StopAll(ApiToken apiToken) throws a {
+	public void StopAll(ApiToken apiToken) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
