@@ -26,14 +26,14 @@ public class AdapterTests {
 	}
 	
 
-	@Before
-	public void runBeforeEachTest() {
-		try {
-			apiToken = adapter.authenticate(mEmail, mPassword);
-		} catch (NotAuthenticatedException e) {
-			fail("@Before failed");
-		}
-	}
+//	@Before
+//	public void runBeforeEachTest() {
+//		try {
+//			this.apiToken = adapter.authenticate(mEmail, mPassword);
+//		} catch (NotAuthenticatedException e) {
+//			fail("@Before failed");
+//		}
+//	}
 	
 
 	@Test
