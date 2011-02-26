@@ -4,7 +4,4 @@ import trackyt.api.java.responses.BaseResponse;
 
 public class AuthenticationResponse extends BaseResponse {
 	
-	private boolean success;
-	private ResponseData data;
-	
 }
