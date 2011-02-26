@@ -2,8 +2,6 @@ package trackyt.api.java.adapter;
 
 import java.util.List;
 
-import org.apache.http.Exception;
-
 import trackyt.api.java.TrackytApiAdapter;
 import trackyt.api.java.exceptions.NotAuthenticatedException;
 import trackyt.api.java.models.ApiToken;
