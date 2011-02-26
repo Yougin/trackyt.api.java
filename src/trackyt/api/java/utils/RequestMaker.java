@@ -55,7 +55,6 @@ public class RequestMaker {
 	}
 	
 	public String getAllTasks(ApiToken token) throws HttpException {
-		Converter converter = new Converter();
 
 		URI uri = urlComposer.composeUrl(MyConfig.GET_TASKS_URL, token);
 		HttpGet httpGet = new HttpGet(uri);

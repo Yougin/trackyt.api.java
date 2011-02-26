@@ -4,18 +4,17 @@ import trackyt.api.java.responses.BaseResponse;
 
 public class AuthenticationResponse extends BaseResponse {
 	
-	public Data data;
+	public AuthData data;
 	
 	public String getApiToken() {
 		return data.getApiToken();
 	}
-	
 }
 
-class Data {
+class AuthData {
 	public String apiToken;
 
-	public Data() {
+	public AuthData() {
 		
 	}
 	public String getApiToken() {
