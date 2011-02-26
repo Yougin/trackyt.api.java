@@ -2,18 +2,47 @@ package trackyt.api.java.adapter;
 
 import java.util.List;
 
+import org.apache.http.HttpException;
+
 import trackyt.api.java.TrackytApiAdapter;
 import trackyt.api.java.exceptions.NotAuthenticatedException;
 import trackyt.api.java.models.ApiToken;
 import trackyt.api.java.models.Task;
+import trackyt.api.java.responses.AuthenticationResponse;
+import trackyt.api.java.utils.RequestMaker;
+
+import com.google.gson.Gson;
 
 public class ApiV11Adapter implements TrackytApiAdapter {
+
+	RequestMaker requestMaker;
+
+	public ApiV11Adapter() {
+		requestMaker = RequestMaker.getInstance();
+	}
 
 	@Override
 	public ApiToken authenticate(String email, String password)
 			throws NotAuthenticatedException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String receivedString;
+		
+		try {
+			receivedString = requestMaker.authenticate(email, password);
+		} catch (HttpException e) {
+			throw new NotAuthenticatedException();
+		}
+		
+		AuthenticationResponse authResponse = new AuthenticationResponse();
+		authResponse = new Gson().fromJson(receivedString, AuthenticationResponse.class);
+
+		if (!authResponse.success) {
+			throw new NotAuthenticatedException();
+		}
+		
+		ApiToken apiToken = new ApiToken(authResponse.getApiToken());
+		
+		return apiToken;
 	}
 
 	@Override
@@ -23,8 +52,7 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 	}
 
 	@Override
-	public Task addTask(ApiToken token, String description)
-			throws Exception {
+	public Task addTask(ApiToken token, String description) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -50,13 +78,13 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 	@Override
 	public void startAll(ApiToken apiToken) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void stopAll(ApiToken apiToken) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
