@@ -1,6 +1,7 @@
 package trackyt.api.java.utils;
 
-import trackyt.android.client.models.Time;
+import trackyt.api.java.models.Time;
+
 public class TimeParser {
 	
     public static Time convertToTime(int receivedTime){
