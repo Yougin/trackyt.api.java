@@ -14,7 +14,7 @@ public interface TrackytApiAdapter {
     * @return ApiToken for authorized users/applications
     * @exception Throws NotAuthenticatedException for unsuccessful authentication
     */
-	ApiToken Authenticate(String email, String password) throws NotAuthenticatedException;
+	ApiToken authenticate(String email, String password) throws NotAuthenticatedException;
 	
 	
 	/**
@@ -23,7 +23,7 @@ public interface TrackytApiAdapter {
 	 * @return List of tasks
 	 * @exception Throws Exception for unsuccessful result
 	 */
-	List<Task> GetAllTasks(ApiToken token) throws Exception;
+	List<Task> getAllTasks(ApiToken token) throws Exception;
 	
 	
 	/**
@@ -33,7 +33,7 @@ public interface TrackytApiAdapter {
 	 * @return Newly created task instance
 	 * @exception Throws Exception for unsuccessful result
 	 */
-	Task AddTask(ApiToken token, String description) throws Exception;
+	Task addTask(ApiToken token, String description) throws Exception;
 	
 	/**
 	 * Delete task
@@ -42,7 +42,7 @@ public interface TrackytApiAdapter {
 	 * @return id of deleted task
 	 * @throws Exception
 	 */
-	int DeleteTask(ApiToken apiToken, int taskId) throws Exception;
+	int deleteTask(ApiToken apiToken, int taskId) throws Exception;
 	
 	
 	/**
@@ -52,7 +52,7 @@ public interface TrackytApiAdapter {
 	 * @return Started task instance
 	 * @throws Exception
 	 */
-	Task StartTask(ApiToken apiToken, int taskId) throws Exception;
+	Task startTask(ApiToken apiToken, int taskId) throws Exception;
 	
 	/**
 	 * Stop task
@@ -61,20 +61,20 @@ public interface TrackytApiAdapter {
 	 * @return Stopped task instance
 	 * @throws Exception
 	 */
-	Task StopTask(ApiToken apiToken, int taskId) throws Exception;
+	Task stopTask(ApiToken apiToken, int taskId) throws Exception;
 	
 	/**
 	 * Stop all tasks
 	 * @param API authentication token
 	 * @throws Exception
 	 */
-	void StartAll(ApiToken apiToken) throws Exception;
+	void startAll(ApiToken apiToken) throws Exception;
 	 
 	/**
 	 * Stop all tasks
 	 * @param API authentication token
 	 * @throws Exception
 	 */
-	void StopAll(ApiToken apiToken) throws Exception; 
+	void stopAll(ApiToken apiToken) throws Exception; 
 	
 }
