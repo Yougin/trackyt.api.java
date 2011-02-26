@@ -1,10 +1,23 @@
 package trackyt.api.java.models;
 
 public class ApiToken {
+	
+	private String token;
+	
+	public ApiToken() {
+		
+	}
+	
+	public ApiToken(String str) {
+		if (str == null) {
+			throw new IllegalArgumentException("token can't be empty");
+		}
+		
+		token = str;
+	}
 
 	public String getToken() {
-		// TODO Auto-generated method stub
-		return null;
+		return token;
 	}
 
 }
