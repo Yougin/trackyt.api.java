@@ -42,7 +42,7 @@ public interface TrackytApiAdapter {
 	 * @return id of deleted task
 	 * @throws Exception
 	 */
-	int deleteTask(ApiToken apiToken, int taskId) throws Exception;
+	int deleteTask(ApiToken token, int taskId) throws Exception;
 	
 	
 	/**
@@ -52,7 +52,7 @@ public interface TrackytApiAdapter {
 	 * @return Started task instance
 	 * @throws Exception
 	 */
-	Task startTask(ApiToken apiToken, int taskId) throws Exception;
+	Task startTask(ApiToken token, int taskId) throws Exception;
 	
 	/**
 	 * Stop task
@@ -61,20 +61,20 @@ public interface TrackytApiAdapter {
 	 * @return Stopped task instance
 	 * @throws Exception
 	 */
-	Task stopTask(ApiToken apiToken, int taskId) throws Exception;
+	Task stopTask(ApiToken token, int taskId) throws Exception;
 	
 	/**
 	 * Stop all tasks
 	 * @param API authentication token
 	 * @throws Exception
 	 */
-	void startAll(ApiToken apiToken) throws Exception;
+	void startAll(ApiToken token) throws Exception;
 	 
 	/**
 	 * Stop all tasks
 	 * @param API authentication token
 	 * @throws Exception
 	 */
-	void stopAll(ApiToken apiToken) throws Exception; 
+	void stopAll(ApiToken token) throws Exception; 
 	
 }
