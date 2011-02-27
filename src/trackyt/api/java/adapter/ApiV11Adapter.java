@@ -158,15 +158,25 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 		BaseResponse response = new Gson().fromJson(receivedString, BaseResponse.class);
 		
 		if (!response.success) {
-			throw new Exception("Stop task operation was unsuccessful");
+			throw new Exception("Start all task operation was unsuccessful");
 		}
-
 	}
 
 	@Override
 	public void stopAll(ApiToken token) throws Exception {
-		// TODO Auto-generated method stub
-
+		String receivedString;
+		
+		try {
+			receivedString = requestMaker.stopAllTasks(token);
+		} catch (HttpException e) {
+			throw new Exception("Request/Response from/to server was unsuccessful");
+		}
+		
+		BaseResponse response = new Gson().fromJson(receivedString, BaseResponse.class);
+		
+		if (!response.success) {
+			throw new Exception("Stop all task operation was unsuccessful");
+		}
 	}
 
 }
