@@ -10,6 +10,7 @@ import trackyt.api.java.models.ApiToken;
 import trackyt.api.java.models.Task;
 import trackyt.api.java.responses.AuthenticationResponse;
 import trackyt.api.java.responses.CreateTaskResponse;
+import trackyt.api.java.responses.DeleteTaskResponse;
 import trackyt.api.java.responses.GetAllTasksResponse;
 import trackyt.api.java.utils.RequestMaker;
 
@@ -85,9 +86,22 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 	}
 
 	@Override
-	public int deleteTask(ApiToken apiToken, int taskId) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteTask(ApiToken token, int taskId) throws Exception {
+		String receivedString;
+		
+		try {
+			receivedString = requestMaker.deleteTask(token, taskId);
+		} catch (HttpException e) {
+			throw new Exception("Request/Response from/to server was unsuccessful");
+		}
+		
+		DeleteTaskResponse response = new Gson().fromJson(receivedString, DeleteTaskResponse.class);
+		
+		if (!response.success) {
+			throw new Exception("Add task operation was unsuccessful");
+		}
+		
+		return response.getTaskId();
 	}
 
 	@Override
