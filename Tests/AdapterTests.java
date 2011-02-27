@@ -95,6 +95,7 @@ public class AdapterTests {
 		try {
 			task = adapter.addTask(apiToken, "New Task");
 		} catch (Exception e) {
+			e.printStackTrace();
 			fail("Failed on AddTask()");
 		}
 
