@@ -13,6 +13,7 @@ import trackyt.api.java.responses.CreateTaskResponse;
 import trackyt.api.java.responses.DeleteTaskResponse;
 import trackyt.api.java.responses.GetAllTasksResponse;
 import trackyt.api.java.responses.StartTaskResponse;
+import trackyt.api.java.responses.StopTaskResponse;
 import trackyt.api.java.utils.RequestMaker;
 
 import com.google.gson.Gson;
@@ -125,9 +126,22 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 	}
 
 	@Override
-	public Task stopTask(ApiToken apiToken, int taskId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Task stopTask(ApiToken token, int taskId) throws Exception {
+		String receivedString;
+		
+		try {
+			receivedString = requestMaker.stopTask(token, taskId);
+		} catch (HttpException e) {
+			throw new Exception("Request/Response from/to server was unsuccessful");
+		}
+		
+		StopTaskResponse response = new Gson().fromJson(receivedString, StopTaskResponse.class);
+		
+		if (!response.success) {
+			throw new Exception("Stop task operation was unsuccessful");
+		}
+		
+		return response.getTask();
 	}
 
 	@Override
