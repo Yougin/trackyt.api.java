@@ -12,6 +12,7 @@ import trackyt.api.java.responses.AuthenticationResponse;
 import trackyt.api.java.responses.CreateTaskResponse;
 import trackyt.api.java.responses.DeleteTaskResponse;
 import trackyt.api.java.responses.GetAllTasksResponse;
+import trackyt.api.java.responses.StartTaskResponse;
 import trackyt.api.java.utils.RequestMaker;
 
 import com.google.gson.Gson;
@@ -98,16 +99,29 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 		DeleteTaskResponse response = new Gson().fromJson(receivedString, DeleteTaskResponse.class);
 		
 		if (!response.success) {
-			throw new Exception("Add task operation was unsuccessful");
+			throw new Exception("Delete task operation was unsuccessful");
 		}
 		
 		return response.getTaskId();
 	}
 
 	@Override
-	public Task startTask(ApiToken apiToken, int taskId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Task startTask(ApiToken token, int taskId) throws Exception {
+		String receivedString;
+		
+		try {
+			receivedString = requestMaker.startTask(token, taskId);
+		} catch (HttpException e) {
+			throw new Exception("Request/Response from/to server was unsuccessful");
+		}
+		
+		StartTaskResponse response = new Gson().fromJson(receivedString, StartTaskResponse.class);
+		
+		if (!response.success) {
+			throw new Exception("Start task operation was unsuccessful");
+		}
+		
+		return response.getTask();
 	}
 
 	@Override
