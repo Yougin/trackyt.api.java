@@ -66,6 +66,10 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 			throw new Exception("Get all tasks operation was unsuccessful");
 		}
 		
+		for (Task task : response.getTasksList()) {
+			task.parseTime();
+		}
+		
 		return response.getTasksList();
 	}
 
@@ -84,6 +88,8 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 		if (!response.success) {
 			throw new Exception("Add task operation was unsuccessful");
 		}
+		
+		response.getTask().parseTime();
 		
 		return response.getTask();
 	}
@@ -123,6 +129,8 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 			throw new Exception("Start task operation was unsuccessful");
 		}
 		
+		response.getTask().parseTime();
+		
 		return response.getTask();
 	}
 
@@ -141,6 +149,8 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 		if (!response.success) {
 			throw new Exception("Stop task operation was unsuccessful");
 		}
+		
+		response.getTask().parseTime();
 		
 		return response.getTask();
 	}
