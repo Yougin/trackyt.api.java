@@ -9,6 +9,7 @@ import trackyt.api.java.exceptions.NotAuthenticatedException;
 import trackyt.api.java.models.ApiToken;
 import trackyt.api.java.models.Task;
 import trackyt.api.java.responses.AuthenticationResponse;
+import trackyt.api.java.responses.BaseResponse;
 import trackyt.api.java.responses.CreateTaskResponse;
 import trackyt.api.java.responses.DeleteTaskResponse;
 import trackyt.api.java.responses.GetAllTasksResponse;
@@ -145,13 +146,25 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 	}
 
 	@Override
-	public void startAll(ApiToken apiToken) throws Exception {
-		// TODO Auto-generated method stub
+	public void startAll(ApiToken token) throws Exception {
+		String receivedString;
+		
+		try {
+			receivedString = requestMaker.startAllTasks(token);
+		} catch (HttpException e) {
+			throw new Exception("Request/Response from/to server was unsuccessful");
+		}
+		
+		BaseResponse response = new Gson().fromJson(receivedString, BaseResponse.class);
+		
+		if (!response.success) {
+			throw new Exception("Stop task operation was unsuccessful");
+		}
 
 	}
 
 	@Override
-	public void stopAll(ApiToken apiToken) throws Exception {
+	public void stopAll(ApiToken token) throws Exception {
 		// TODO Auto-generated method stub
 
 	}
