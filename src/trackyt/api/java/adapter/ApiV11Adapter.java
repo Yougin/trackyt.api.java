@@ -9,6 +9,7 @@ import trackyt.api.java.exceptions.NotAuthenticatedException;
 import trackyt.api.java.models.ApiToken;
 import trackyt.api.java.models.Task;
 import trackyt.api.java.responses.AuthenticationResponse;
+import trackyt.api.java.responses.CreateTaskResponse;
 import trackyt.api.java.responses.GetAllTasksResponse;
 import trackyt.api.java.utils.RequestMaker;
 
@@ -66,8 +67,21 @@ public class ApiV11Adapter implements TrackytApiAdapter {
 
 	@Override
 	public Task addTask(ApiToken token, String description) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		String receivedString;
+		
+		try {
+			receivedString = requestMaker.addTask(token, description);
+		} catch (HttpException e) {
+			throw new Exception("Request/Response from/to server was unsuccessful");
+		}
+		
+		CreateTaskResponse response = new Gson().fromJson(receivedString, CreateTaskResponse.class);
+		
+		if (!response.success) {
+			throw new Exception("Add task operation was unsuccessful");
+		}
+		
+		return response.getTask();
 	}
 
 	@Override
