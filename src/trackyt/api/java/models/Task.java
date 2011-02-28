@@ -12,6 +12,10 @@ public class Task {
 	private int spent;
 	private Time time; 
 
+	public Time getTime() {
+		return time;
+	}
+
 	public Task() {
 	}
 
