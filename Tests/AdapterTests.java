@@ -332,4 +332,29 @@ public class AdapterTests {
 			fail("stopAll() failed");
 		}
 	}
+	
+	@Test
+	public void Task_Parcing_Verification() {
+		List<Task> tmpList = null;
+		
+		try {
+			tmpList = adapter.getAllTasks(apiToken);
+		} catch (Exception e) {
+			fail("getAllTasks operation was unsuccessful");
+		}
+		
+		if (tmpList == null) {
+			fail("tmpList is null, getAll Tasks failed");
+		}
+		
+		assertTrue("Task's id is zero", ((Task)tmpList.get(0)).getId() > 0);
+		assertNotNull("Description is null", ((Task)tmpList.get(0)).getDescription());
+		assertTrue("Task's status is zero", ((Task)tmpList.get(0)).getStatus() > 0);
+		assertNotNull("Tasks's createdDate is null", ((Task)tmpList.get(0)).getCreatedDate());
+		assertNotNull("Tasks's startedDate is null", ((Task)tmpList.get(0)).getStartedDate());
+		assertNotNull("Tasks's stoppedDate is null", ((Task)tmpList.get(0)).getStoppedDate());
+		assertTrue("Task's spent value is zero", ((Task)tmpList.get(0)).getSpent() > 0);
+		assertNotNull("Tasks's time object is null", ((Task)tmpList.get(0)).getTime());
+		
+	}
 }
